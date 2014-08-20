@@ -21,7 +21,7 @@ dependencies {
 
 task wsdl2java(type: JavaExec) {
 	ext {
-		wsdlFile = '' // http://tnm:8080/soap/mtosi/ManagedElementRetrieval?wsdl'
+//		wsdlFile = '' // http://tnm:8080/soap/mtosi/ManagedElementRetrieval?wsdl'
 		outputDir = file("$buildDir/generated-src")
 	}
 	// inputs.file file(wsdlFile)
@@ -39,5 +39,10 @@ task wsdl2java(type: JavaExec) {
 	args '-client'
 	args '-verbose'
 	args '-validate'
-	args wsdlFile
+	//args wsdlFile
+
+	doFirst {
+	    args wsdlFile
+	    println wsdlFile
+	}
 }
