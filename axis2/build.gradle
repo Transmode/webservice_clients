@@ -1,21 +1,19 @@
 apply from: "$rootDir/gradle/java-basics.gradle"
+apply from: "$rootDir/gradle/axis2.gradle"
 
-configurations { axis2 }
-dependencies { axis2 'org.apache.axis2:axis2-ant-plugin:1.6.2' }
-task wsdl2java << {
-	ant.taskdef(name: 'wsdls2java',
-	classname: 'org.apache.axis2.tool.ant.AntCodegenTask',
-	classpath: configurations.axis2.asPath)
-	ant.wsdl2java(wsdlfilename: "http://tnm:8080/soap/mtosi/ManagedElementRetrieval?wsdl",
-	syncOnly: "true",
-	unwrap: "true",
-	unpackClasses: "true",
-	output: "$buildDir")
+wsdl2java.wsdlFile = 'http://tnm:8080/soap/mtosi/AlarmRetrieval?wsdl'
+
+dependencies {
+	def axis2Group = 'org.apache.axis2'
+	def axis2Version='1.6.2'
+	compile  axis2Group + ':axis2-kernel:' + axis2Version
+	compile  axis2Group + ':axis2-adb:' + axis2Version
 }
 
-// http://tnm:8080/soap/mtosi/ManagedElementRetrieval?wsdl
 sourceSets {
-	main { java.srcDir "$buildDir/src" }
+	main {
+        java.srcDir wsdl2java.outputDir
+	}
 }
 
 compileJava.dependsOn wsdl2java

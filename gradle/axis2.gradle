@@ -1,0 +1,23 @@
+configurations { axis2 }
+dependencies { axis2 'org.apache.axis2:axis2-ant-plugin:1.6.2' }
+task wsdl2java {
+	ext {
+		wsdlFile = ''
+		outputDir = file("$buildDir/generated-src")
+	}
+	ant.taskdef(name: 'wsdl2java',
+	classname: 'org.apache.axis2.tool.ant.AntCodegenTask',
+	classpath: configurations.axis2.asPath)
+	project.gradle.projectsEvaluated {
+		inputs.property('wsdlFile', wsdlFile)
+		outputs.dir outputDir
+	}
+	doFirst { delete outputDir }
+	doLast {
+		ant.wsdl2java(wsdlfilename: "$wsdlFile",
+		syncOnly: "true",
+		unwrap: "true",
+		unpackClasses: "true",
+		output: "$outputDir")
+	}
+}

@@ -1,15 +1,16 @@
 configurations { cxf }
 
 dependencies {
+	def cxfGroup = 'org.apache.cxf'
     def cxfVersion = '3.0.1'
-    cxf 'org.apache.cxf:cxf-tools-wsdlto-core:' + cxfVersion
-    cxf 'org.apache.cxf:cxf-tools-wsdlto-frontend-jaxws:' + cxfVersion
-    cxf 'org.apache.cxf:cxf-tools-wsdlto-databinding-jaxb:' + cxfVersion
+    cxf cxfGroup + ':cxf-tools-wsdlto-core:' + cxfVersion
+    cxf cxfGroup + ':cxf-tools-wsdlto-frontend-jaxws:' + cxfVersion
+    cxf cxfGroup + ':cxf-tools-wsdlto-databinding-jaxb:' + cxfVersion
 }
 
 task wsdl2java(type: JavaExec) {
 	ext {
-        wsdlFile = new String()
+        wsdlFile = ''
 		outputDir = file("$buildDir/generated-src")
 	}
 
