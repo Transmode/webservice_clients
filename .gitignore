@@ -16,6 +16,10 @@ hs_err_pid*
 .settings
 .project
 
+# IntelliJ
+*.iml
+.idea
+
 #gradle
 .gradle
 build
