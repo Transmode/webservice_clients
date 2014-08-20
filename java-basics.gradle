@@ -1,0 +1,16 @@
+apply plugin: 'base'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+	maven {
+		url "http://artifactory/artifactory/repo"
+	}
+	mavenCentral()
+	maven {
+		url "http://www.knopflerfish.org/maven2/"
+	}
+}
