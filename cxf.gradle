@@ -1,0 +1,43 @@
+configurations { cxf }
+
+ext {
+	// CXF version.
+	cxfVersion = '2.6.2'
+
+	// Artifacts for CXF dependency.
+	cxfArtifacts = [
+		'cxf-tools-wsdlto-frontend-jaxws',
+		'cxf-tools-wsdlto-databinding-jaxb',
+		'cxf-tools-common',
+		'cxf-tools-wsdlto-core'
+	]
+}
+
+dependencies {
+	// Assign CXF dependencies to configuration.
+	cxfArtifacts.each { artifact -> cxf "org.apache.cxf:$artifact:$cxfVersion" }
+}
+
+
+task wsdl2java(type: JavaExec) {
+	ext {
+		wsdlFile = '' // http://tnm:8080/soap/mtosi/ManagedElementRetrieval?wsdl'
+		outputDir = file("$buildDir/generated-src")
+	}
+	// inputs.file file(wsdlFile)
+	outputs.dir outputDir
+
+	// Main Java class to invoke.
+	main = 'org.apache.cxf.tools.wsdlto.WSDLToJava'
+
+	// Set classpath to dependencies assigned
+	// to the cxf configuration.
+	classpath = configurations.cxf
+
+	// Arguments to be passed to WSDLToJava.
+	args '-d', outputDir
+	args '-client'
+	args '-verbose'
+	args '-validate'
+	args wsdlFile
+}
