@@ -1,23 +1,11 @@
 configurations { cxf }
 
-ext {
-	// CXF version.
-	cxfVersion = '2.6.2'
-
-	// Artifacts for CXF dependency.
-	cxfArtifacts = [
-		'cxf-tools-wsdlto-frontend-jaxws',
-		'cxf-tools-wsdlto-databinding-jaxb',
-		'cxf-tools-common',
-		'cxf-tools-wsdlto-core'
-	]
-}
-
 dependencies {
-	// Assign CXF dependencies to configuration.
-	cxfArtifacts.each { artifact -> cxf "org.apache.cxf:$artifact:$cxfVersion" }
+    def cxfVersion = '3.0.1'
+    cxf 'org.apache.cxf:cxf-tools-wsdlto-core:' + cxfVersion
+    cxf 'org.apache.cxf:cxf-tools-wsdlto-frontend-jaxws:' + cxfVersion
+    cxf 'org.apache.cxf:cxf-tools-wsdlto-databinding-jaxb:' + cxfVersion
 }
-
 
 task wsdl2java(type: JavaExec) {
 	ext {
