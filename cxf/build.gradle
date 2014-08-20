@@ -1,4 +1,12 @@
-apply from: "$rootDir/java-basics.gradle"
-apply from: "$rootDir/cxf.gradle"
+apply from: "$rootDir/gradle/java-basics.gradle"
+apply from: "$rootDir/gradle/cxf.gradle"
 
 wsdl2java.wsdlFile = 'http://tnm:8080/soap/mtosi/AlarmRetrieval?wsdl'
+
+sourceSets {
+    main {
+        java.srcDir wsdl2java.outputDir
+    }
+}
+
+compileJava.dependsOn wsdl2java

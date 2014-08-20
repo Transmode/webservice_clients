@@ -1,4 +1,4 @@
-apply from: "$rootDir/java-basics.gradle"
+apply from: "$rootDir/gradle/java-basics.gradle"
 
 configurations { axis2 }
 dependencies { axis2 'org.apache.axis2:axis2-ant-plugin:1.6.2' }
