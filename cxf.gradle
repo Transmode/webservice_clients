@@ -21,10 +21,8 @@ dependencies {
 
 task wsdl2java(type: JavaExec) {
 	ext {
-//		wsdlFile = '' // http://tnm:8080/soap/mtosi/ManagedElementRetrieval?wsdl'
 		outputDir = file("$buildDir/generated-src")
 	}
-	// inputs.file file(wsdlFile)
 	outputs.dir outputDir
 
 	// Main Java class to invoke.
@@ -39,10 +37,13 @@ task wsdl2java(type: JavaExec) {
 	args '-client'
 	args '-verbose'
 	args '-validate'
-	//args wsdlFile
 
-	doFirst {
+    project.gradle.projectsEvaluated {
+        inputs.property('wsdlFile', wsdlFile)
 	    args wsdlFile
-	    println wsdlFile
 	}
+
+    doFirst {
+        delete outputDir
+    }
 }
