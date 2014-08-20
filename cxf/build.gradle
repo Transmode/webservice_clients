@@ -1,5 +1,4 @@
 apply from: "$rootDir/java-basics.gradle"
 apply from: "$rootDir/cxf.gradle"
 
-ext.wsdlFile = 'http://tnm:8080/soap/mtosi/ManagedElementRetrieval?wsdl'
-
+wsdl2java.wsdlFile = 'http://tnm:8080/soap/mtosi/AlarmRetrieval?wsdl'

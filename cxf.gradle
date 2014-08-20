@@ -21,9 +21,9 @@ dependencies {
 
 task wsdl2java(type: JavaExec) {
 	ext {
+        wsdlFile = new String()
 		outputDir = file("$buildDir/generated-src")
 	}
-	outputs.dir outputDir
 
 	// Main Java class to invoke.
 	main = 'org.apache.cxf.tools.wsdlto.WSDLToJava'
@@ -40,7 +40,8 @@ task wsdl2java(type: JavaExec) {
 
     project.gradle.projectsEvaluated {
         inputs.property('wsdlFile', wsdlFile)
-	    args wsdlFile
+        outputs.dir outputDir
+        args wsdlFile
 	}
 
     doFirst {
