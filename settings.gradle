@@ -1,3 +1,4 @@
 include ':cxf_mer'
 include ':cxf_eir'
 include ':axis2_mer'
+include ':wsimport_mer'

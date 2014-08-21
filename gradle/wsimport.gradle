@@ -1,0 +1,29 @@
+configurations{
+    jaxws
+}
+
+dependencies{
+    jaxws "com.sun.xml.ws:jaxws-tools:2.2.8"
+}
+
+task wsimport  {
+	ext {
+		wsdlFile = ''
+		outputDir = file("$buildDir/generated-src")
+	}
+        ant.taskdef(name:'wsimport',
+	    classname:'com.sun.tools.ws.ant.WsImport',
+	    classpath:configurations.jaxws.asPath)
+	project.gradle.projectsEvaluated {
+		inputs.property('wsdlFile', wsdlFile)
+		outputs.dir outputDir
+	}
+	doFirst { delete outputDir }
+        doLast{
+		outputDir.mkdirs()
+		ant.wsimport(wsdl: "$wsdlFile",
+		xnocompile: 'true',
+		extension: 'true',
+		sourcedestdir: "$outputDir")
+    }
+}

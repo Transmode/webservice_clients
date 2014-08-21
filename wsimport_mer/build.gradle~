@@ -1,0 +1,12 @@
+apply from: "$rootDir/gradle/java-basics.gradle"
+apply from: "$rootDir/gradle/wsimport.gradle"
+
+wsimport.wsdlFile = "$server/soap/mtosi/ManagedElementRetrieval?wsdl"
+
+sourceSets {
+	main {
+        java.srcDir wsdlimport.outputDir
+	}
+}
+
+compileJava.dependsOn wsimport
