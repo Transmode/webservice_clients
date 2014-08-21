@@ -11,13 +11,13 @@ Example of how to generate webservice clients with cxf and axis2.
 To build everything:
 
 ```
-> ./gradlew build -Pserver=myserver.example.com:8080
+> ./gradlew build -Pserver=http://myserver.example.com:8080
 ```
 
 To build only one client:
 
 ```
-> ./gradlew :cxf_mer:build -Pserver=myserver.example.com:8080
+> ./gradlew :cxf_mer:build -Pserver=http://myserver.example.com:8080
 ```
 
 Known problems
