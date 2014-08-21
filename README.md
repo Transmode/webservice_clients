@@ -23,7 +23,9 @@ To build only one client:
 Known problems
 ==============
 
-axis2 codegen fails to generate valid java code with the current 
-release of the webservices.
+Axis2 1.6.x fails to generate valid java code.
+Possibly this is related to the following ticket:
+https://issues.apache.org/jira/browse/AXIS2-5319
+
 
 
