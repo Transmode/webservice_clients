@@ -4,7 +4,7 @@ Webservice clients
 Example of how to generate webservice clients with cxf and axis2.
 
 ```
-> git clone https@github.com:Transmode/webservice_clients.git
+> git clone https://github.com/Transmode/webservice_clients.git
 > cd webservices_client
 ```
 
