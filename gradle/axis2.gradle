@@ -1,5 +1,10 @@
+// There's bug in 1.6.0-2
+// def axis2Version='1.7.0-SNAPSHOT'
+// def axis2Version='1.6.3-SNAPSHOT'
+// def axis2Version='1.6.2' // most recent released version
+def axis2Version='1.5.6'
 configurations { axis2 }
-dependencies { axis2 'org.apache.axis2:axis2-ant-plugin:1.6.2' }
+dependencies { axis2 "org.apache.axis2:axis2-ant-plugin:$axis2Version" }
 task wsdl2java {
 	ext {
 		wsdlFile = ''
