@@ -4,20 +4,20 @@ Webservice clients
 Example of how to generate webservice clients with cxf and axis2.
 
 ```
-> git clone git@github.com:Transmode/webservice_clients.git
+> git clone https@github.com:Transmode/webservice_clients.git
 > cd webservices_client
 ```
 
 To build everything:
 
 ```
-> ./gradlew build -Pserver=myserver.example.com
+> ./gradlew build -Pserver=myserver.example.com:8080
 ```
 
 To build only one client:
 
 ```
-> ./gradlew :cxf_mer:build -Pserver=myserver.example.com
+> ./gradlew :cxf_mer:build -Pserver=myserver.example.com:8080
 ```
 
 Known problems
