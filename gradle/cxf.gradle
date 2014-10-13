@@ -11,7 +11,7 @@ dependencies {
 task wsdl2java(type: JavaExec) {
 	ext {
         wsdlFile = ''
-		outputDir = file("$buildDir/generated-src")
+		outputDir = file("$projectDir/generated-src")
 	}
 
 	// Main Java class to invoke.
@@ -37,3 +37,5 @@ task wsdl2java(type: JavaExec) {
         delete outputDir
     }
 }
+
+clean.delete wsdl2java.outputDir
