@@ -30,22 +30,20 @@ Running on the command line:
 
 Outputs something like this:
 
+1: Equipment: name=passive:1, subrack=1, slot=-1
+2: Equipment: name=passive:1, subrack=1, slot=-1
+3: Equipment: name=passive:1, subrack=1, slot=-1
+4: Equipment: name=co10:1:10, subrack=1, slot=10
+5: Equipment: name=passive:1, subrack=1, slot=-1
+6: Equipment: name=passive:1, subrack=1, slot=-1
+7: Equipment: name=tm301:1, subrack=1, slot=-1
+8: Equipment: name=cusfp:1:1, subrack=1, slot=1
+9: Equipment: name=voa8chsfp:1:2, subrack=1, slot=2
+10: Equipment: name=port:1:2:1-2:VOA1, subrack=1, slot=2
+11: Equipment: name=port:1:2:5-6:VOA3, subrack=1, slot=2
+12: Equipment: name=port:1:2:11-12:VOA6, subrack=1, slot=2
+13: Equipment: name=port:1:2:15-16:VOA8, subrack=1, slot=2
+14: Equipment: name=undefined:1:4, subrack=1, slot=4
 ...
-To build everything
--------------------
-
-    ./gradlew build -Pserver=http://myserver.example.com:8080
-
-To build only one client:
-
-    ./gradlew :cxf_mer:build -Pserver=http://myserver.example.com:8080
-
-Known problems
---------------
-
-Axis2 1.6.x fails to generate valid java code.
-Possibly this is related to the following ticket:
-https://issues.apache.org/jira/browse/AXIS2-5319
-
 
 

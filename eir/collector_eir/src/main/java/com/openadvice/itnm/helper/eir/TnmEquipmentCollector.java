@@ -13,14 +13,12 @@ import org.tmforum.mtop.mri.wsdl.eir.v1_0.EquipmentInventoryRetrievalRPC;
 import org.tmforum.mtop.mri.wsdl.eir.v1_0.GetAllEquipmentException;
 import org.tmforum.mtop.mri.wsdl.eir.v1_0.GetEquipmentIteratorException;
 import org.tmforum.mtop.mri.xsd.eir.v1.GetAllEquipmentRequestType;
-import org.tmforum.mtop.nrf.xsd.eh.v1.EquipmentHolderType;
 import org.tmforum.mtop.nrf.xsd.eq.v1.EquipmentType;
 import org.tmforum.mtop.nrf.xsd.eq_inv.v1.EquipmentOrHolderListType;
 import org.tmforum.mtop.nrf.xsd.eq_inv.v1.EquipmentOrHolderType;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.ws.Holder;
-
-import org.apache.log4j.Logger;
 
 import com.openadvice.itnm.types.Equipment;
 
@@ -37,7 +35,7 @@ public class TnmEquipmentCollector {
 			final Holder<Header> holder = new Holder<>(new Header());
 			holder.value
 					.setCommunicationPattern(CommunicationPatternType.MULTIPLE_BATCH_RESPONSE);
-			holder.value.setRequestedBatchSize(10l);
+			holder.value.setRequestedBatchSize(100l);
 
 			final EquipmentInventoryRetrievalRPC equipmentInventoryRetrievalSoapHttp = equipmentInventoryRetrievalHttp
 					.getEquipmentInventoryRetrievalSoapHttp();
@@ -75,8 +73,9 @@ public class TnmEquipmentCollector {
 				if (equipmentType.getVendorExtensions() != null) {
 					for (final Object vendorExtension : equipmentType
 							.getVendorExtensions().getAny()) {
-						if (vendorExtension instanceof EquipmentExtraInfo) {
-							final EquipmentExtraInfo equipmentExtraInfo = (EquipmentExtraInfo) vendorExtension;
+						final JAXBElement<?> jaxbElement = (JAXBElement<?>) vendorExtension;
+						if (jaxbElement.getValue() instanceof EquipmentExtraInfo) {
+							final EquipmentExtraInfo equipmentExtraInfo = (EquipmentExtraInfo) jaxbElement.getValue();
 							equipment.subrack(equipmentExtraInfo.getSubrack());
 							equipment.slot(equipmentExtraInfo.getSlot());
 						}
@@ -86,7 +85,6 @@ public class TnmEquipmentCollector {
 				System.out.println(equipments.size() + ": " + equipment.build());
 			}
 		}
-		System.out.println("");
 	}
 
 	public static void main(String[] args) {
