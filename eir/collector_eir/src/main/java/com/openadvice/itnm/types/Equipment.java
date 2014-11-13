@@ -29,13 +29,13 @@ public class Equipment {
 			return this;
 		}
 
-		public Builder subrack(int subrack) {
-			this.subrack = subrack;
+		public Builder subrack(Integer subrack) {
+			this.subrack = subrack != null ? subrack : null;
 			return this;
 		}
 
-		public Builder slot(int slot) {
-			this.slot = slot;
+		public Builder slot(Integer slot) {
+			this.slot = slot != -1 ? slot : null;
 			return this;
 		}
 
