@@ -1,7 +1,12 @@
 apply from: "$rootDir/gradle/java-basics.gradle"
 apply from: "$rootDir/gradle/cxf.gradle"
 
-wsdl2java.wsdlFile = "$server/soap/mtosi/EquipmentInventoryRetrieval?wsdl"
+if (hasProperty('server')) {
+    wsdl2java.wsdlFile = "$server/soap/mtosi/EquipmentInventoryRetrieval?wsdl"
+}
+else {
+    wsdl2java.wsdlFile = "http://tnm:8080/soap/mtosi/EquipmentInventoryRetrieval?wsdl"
+}
 
 sourceSets {
     main {
@@ -10,3 +15,7 @@ sourceSets {
 }
 
 compileJava.dependsOn wsdl2java
+
+artifacts {
+	archives jar
+}
