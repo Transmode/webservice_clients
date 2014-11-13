@@ -3,7 +3,7 @@ apply plugin: 'application'
 
 dependencies {
     compile 'log4j:log4j:1.2.17'
-    compile project(':cxf_mer')
+    compile project(':mer:cxf_mer')
     testCompile 'junit:junit:4.11'
 }
 
