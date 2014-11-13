@@ -1,18 +1,18 @@
 Webservice clients
 ==================
 
-Example of how to generate webservice clients with cxf and axis2.
+Example of how to generate webservice clients with CXF (and wsimport).
 
     git clone https://github.com/Transmode/webservice_clients.git
     cd webservices_client
 
-To build the collector
-----------------------
+To build the managed element collector
+--------------------------------------
 
 Running on the command line:
 
-    cd collector   
-    ../gradlew run -Pserver='http://anotherserver:8080'
+    cd mer/collector_mer   
+    ../gradlew run -Pserver='http://myserver.example.com:8080'
 
 Outputs something like this:
 
@@ -20,8 +20,17 @@ Outputs something like this:
 
     ManagedElement [md=Tnm Server, me=1.2.3.4, userLabel=Passive, resourceState=INSTALLING_INSTALLED, location=, productName=Passive, isInSyncState=false, communicationState=CS_UNAVAILABLE]
     
+To build the equipment collector
+--------------------------------
 
+Running on the command line:
 
+    cd mer/collector_eir   
+    ../gradlew run -Pserver='http://myserver.example.com:8080'
+
+Outputs something like this:
+
+...
 To build everything
 -------------------
 

@@ -6,7 +6,7 @@ Managed element collector
 
 Running on the command line:
 
-    cd collector   
+    cd mer/collector_mer   
     ../gradlew run -Pserver='http://anotherserver:8080'
 
 Outputs something like this:
