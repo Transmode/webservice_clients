@@ -1,0 +1,18 @@
+apply from: "$rootDir/gradle/java-basics.gradle"
+apply plugin: 'application'
+
+dependencies {
+	compile project(":collector_common")
+    compile 'log4j:log4j:1.2.17'
+    compile project(':tpr:cxf_tpr')
+    testCompile 'junit:junit:4.11'
+	testCompile 'org.hamcrest:hamcrest-all:1.3'
+}
+
+mainClassName = 'com.openadvice.itnm.helper.tpr.TnmPtpCollector'
+
+if (hasProperty('host')) {
+    run {
+        args host
+    }
+}
