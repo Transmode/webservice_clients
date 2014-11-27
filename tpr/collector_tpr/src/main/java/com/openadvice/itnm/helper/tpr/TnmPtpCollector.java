@@ -60,7 +60,8 @@ public class TnmPtpCollector {
 					ptpInfo.userLabel(physicalTerminationPointType
 							.getUserLabel());
 					for (Object vendorExtension : physicalTerminationPointType
-							.getVendorExtensions().getAny()) {
+							.getVendorExtensions().getAny()) { 
+						if (vendorExtension instanceof JAXBElement<?>) {
 						final JAXBElement<?> jaxbElement = (JAXBElement<?>) vendorExtension;
 						if (jaxbElement.getValue() instanceof PhysicalTerminationPointExtraInfo) {
 							final PhysicalTerminationPointExtraInfo physicalTerminationPointExtraInfo = (PhysicalTerminationPointExtraInfo) jaxbElement
@@ -71,7 +72,7 @@ public class TnmPtpCollector {
 
 							}
 						}
-						System.out.println(jaxbElement.getValue());
+						}
 					}
 					ptpInfos.add(ptpInfo.build());
 				}
