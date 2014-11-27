@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.tmforum.mtop.fmw.xsd.hdr.v1.CommunicationPatternType;
 import org.tmforum.mtop.fmw.xsd.hdr.v1.Header;
+import org.tmforum.mtop.fmw.xsd.nam.v1.NamingAttributeType;
 import org.tmforum.mtop.mri.wsdl.eir.v1_0.EquipmentExtraInfo;
 import org.tmforum.mtop.mri.wsdl.eir.v1_0.EquipmentInventoryRetrievalHttp;
 import org.tmforum.mtop.mri.wsdl.eir.v1_0.EquipmentInventoryRetrievalRPC;
@@ -16,6 +17,7 @@ import org.tmforum.mtop.mri.xsd.eir.v1.GetAllEquipmentRequestType;
 import org.tmforum.mtop.nrf.xsd.eq.v1.EquipmentType;
 import org.tmforum.mtop.nrf.xsd.eq_inv.v1.EquipmentOrHolderListType;
 import org.tmforum.mtop.nrf.xsd.eq_inv.v1.EquipmentOrHolderType;
+import org.tmforum.mtop.fmw.xsd.nam.v1.RelativeDistinguishNameType;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.ws.Holder;
@@ -82,10 +84,20 @@ public class TnmEquipmentCollector {
 					}
 				}
 				equipments.add(equipment.build());
-				System.out.println(equipments.size() + ": " + equipment.build());
+				System.out.println(equipments.size() + ": " + toString(equipmentType.getName()) +  equipment.build());
 			}
 		}
 	}
+
+private static String toString(NamingAttributeType name) {
+        StringBuilder builder = new StringBuilder();
+        String separator = "";
+        for (RelativeDistinguishNameType rdn : name.getRdn()) {
+            builder.append(separator).append(rdn.getType()).append("=").append(rdn.getValue());
+            separator = "/";
+        }
+        return builder.toString();
+    }
 
 	public static void main(String[] args) {
 		final String endPointAddress;

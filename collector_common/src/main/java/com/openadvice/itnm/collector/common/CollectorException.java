@@ -1,4 +1,4 @@
-package com.openadvice.itnm.helper;
+package com.openadvice.itnm.collector.common;
 
 public class CollectorException extends RuntimeException {
 	private static final long serialVersionUID = 6751374393189926980L;

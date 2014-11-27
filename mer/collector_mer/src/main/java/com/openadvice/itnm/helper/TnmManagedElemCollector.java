@@ -1,6 +1,8 @@
 package com.openadvice.itnm.helper;
 
+import com.openadvice.itnm.collector.common.CollectorException;
 import com.openadvice.itnm.types.ManagedElement;
+
 import org.apache.log4j.Logger;
 import org.tmforum.mtop.fmw.xsd.hdr.v1.Header;
 import org.tmforum.mtop.fmw.xsd.nam.v1.RelativeDistinguishNameType;
@@ -12,6 +14,7 @@ import org.tmforum.mtop.mri.xsd.mer.v1.MultipleMeObjectsResponseType;
 import org.tmforum.mtop.nrf.xsd.me.v1.ManagedElementType;
 
 import javax.xml.ws.Holder;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
