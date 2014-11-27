@@ -1,0 +1,21 @@
+apply from: "$rootDir/gradle/java-basics.gradle"
+apply from: "$rootDir/gradle/cxf.gradle"
+
+if (hasProperty('server')) {
+    wsdl2java.wsdlFile = "$server/soap/mtosi/TerminationPointRetrieval?wsdl"
+}
+else {
+    wsdl2java.wsdlFile = "http://tnm:8080/soap/mtosi/TerminationPointRetrieval?wsdl"
+}
+
+sourceSets {
+    main {
+        java.srcDir wsdl2java.outputDir
+    }
+}
+
+compileJava.dependsOn wsdl2java
+
+artifacts {
+	archives jar
+}
