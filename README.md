@@ -12,7 +12,7 @@ Running the managed element collector
 Running on the command line:
 
     cd mer/collector_mer   
-    ../gradlew run -Pserver='http://myserver.example.com:8080'
+    ../../gradlew run -Pserver='http://myserver.example.com:8080'
 
 Outputs something like this:
 
@@ -25,8 +25,8 @@ Running the equipment collector
 
 Running on the command line:
 
-    cd mer/collector_eir   
-    ../gradlew run -Pserver='http://myserver.example.com:8080'
+    cd eir/collector_eir   
+    ../../gradlew run -Pserver='http://myserver.example.com:8080'
 
 Outputs something like this:
 
@@ -43,7 +43,7 @@ Running the TP collector
 Run on the command line: 
 
     cd tpr/collector_tpr
-    ../gradlew run -Pserver='http://myserver.example.com:8080'
+    ../../gradlew run -Pserver='http://myserver.example.com:8080'
     
 Should print something like this:
 
