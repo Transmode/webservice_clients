@@ -25,7 +25,7 @@ public class Equipment {
 		private Integer subrack = null;
 
 		public Builder userLabel(String userLabel) {
-			this.userLabel = Objects.requireNonNull(userLabel);
+			this.userLabel = userLabel != null ? userLabel : "";
 			return this;
 		}
 
